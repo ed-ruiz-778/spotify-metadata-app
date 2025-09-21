@@ -1,106 +1,90 @@
 # Spotify Track Metadata Finder
 
-This is a full-stack application that allows users to fetch music track metadata using an ISRC code. The data is retrieved from the Spotify API, stored in a PostgreSQL database, and displayed on a React-based user interface.
-
-
+A full-stack application designed to fetch, store, and display music track metadata using an ISRC code. The project leverages a Spring Boot backend API and a responsive React frontend.
 
 ## ✨ Features
 
--   **Backend:** A robust REST API built with Java 21, Spring Boot 3, and secured with Spring Security.
--   **Frontend:** A responsive and interactive single-page application built with React, Vite, and Material-UI.
--   **Database:** PostgreSQL for persistent data storage.
--   **Containerization:** The entire backend environment (API + Database) is containerized with Docker and can be launched with a single command.
--   **API Documentation:** The backend includes an interactive Swagger UI for exploring and testing the API endpoints.
--   **State Management:** The frontend uses React's Context API for clean, centralized state management.
+-   **RESTful Backend API:** Built with Java 21 & Spring Boot, providing endpoints to create and retrieve track data.
+-   **Spotify Integration:** Fetches track metadata and cover art in real-time from the official Spotify API.
+-   **Containerized Environment:** The backend and its PostgreSQL database are fully containerized with Docker for easy setup and consistent execution.
+-   **Secure Endpoints:** The API is protected using Spring Security with HTTP Basic Authentication.
+-   **Interactive API Documentation:** Includes a Swagger UI for easy exploration and testing of all backend endpoints.
+-   **Reactive Frontend:** A clean and modern user interface built with React, Vite, and Material-UI.
+-   **Centralized State Management:** Uses React's Context API for clean, centralized state management.
 
 ## 🚀 Tech Stack
 
-**Backend:**
--   Java 21
--   Spring Boot 3.3.4
--   Spring Security (HTTP Basic Auth)
--   Spring Data JPA
--   PostgreSQL
--   Docker & Docker Compose
--   Maven
+| Backend                               | Frontend                  |
+| ------------------------------------- | ------------------------- |
+| Java 21                               | React 18 & Vite           |
+| Spring Boot 3.3.4                     | React Router              |
+| Spring Data JPA & Spring Security     | Axios                     |
+| PostgreSQL                            | Material-UI (MUI)         |
+| Docker & Docker Compose               |                           |
+| Maven                                 |                           |
 
-**Frontend:**
--   React 18
--   Vite
--   React Router
--   Axios
--   Material-UI (MUI)
+## ⚙️ Getting Started
 
-## 📋 Prerequisites
+Follow these steps to set up and run the project locally.
 
-Before you begin, you will need to have the following tools installed on your system:
+### Prerequisites
 
+Ensure you have the following software installed:
 -   [Docker & Docker Compose](https://www.docker.com/products/docker-desktop/)
 -   [Node.js & npm](https://nodejs.org/) (v18 or higher)
 -   Git
 
-## ⚙️ Setup and Installation
+### Installation and Execution
 
-### 1. Clone the Repository
-
-```bash
-git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/tu-usuario/tu-repositorio.git)
-cd tu-repositorio
-
-### 2. Configure the Backend
-
-The backend requires credentials for the Spotify API to function.
-
--   Navigate to the backend directory:
+1.  **Clone the Repository**
+    
     ```bash
-    cd backend
-    ```
--   Create a new file named `.env` in this directory.
--   Add your Spotify Client ID and Client Secret to the `.env` file like this:
-    ```
-    SPOTIFY_CLIENT_ID=your_spotify_client_id
-    SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
-    ```
--   **Important:** Make sure the `backend/.gitignore` file contains a line with `.env` to prevent committing your secrets.
-
-### 3. Run the Application
-
-The entire application can be launched with just two commands in two separate terminals.
-
-**Terminal 1: Start the Backend & Database**
-
--   From the `backend` directory, run:
-    ```bash
-    docker-compose up --build
+    git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/tu-usuario/tu-repositorio.git)
+    cd tu-repositorio
     ```
 
-**Terminal 2: Start the Frontend**
+2.  **Configure and Run the Backend**
 
--   From the project's root directory, navigate to the `frontend` directory:
-    ```bash
-    cd frontend
-    ```
--   Install the necessary packages:
-    ```bash
-    npm install
-    ```
--   Start the development server:
-    ```bash
-    npm run dev
-    ```
+    -   Navigate to the `backend` directory:
+        ```bash
+        cd backend
+        ```
+    -   Create a `.env` file and add your Spotify API credentials:
+        ```
+        SPOTIFY_CLIENT_ID=your_spotify_client_id
+        SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+        ```
+    -   Launch the backend and database (this will take a minute the first time):
+        ```bash
+        docker-compose up --build
+        ```
 
-### 4. Accessing the Application
+3.  **Configure and Run the Frontend**
 
-Once both parts are running, you can access them at the following URLs:
+    -   Open a **new terminal window**.
+    -   Navigate to the `frontend` directory:
+        ```bash
+        cd frontend
+        ```
+    -   Install dependencies:
+        ```bash
+        npm install
+        ```
+    -   Start the development server:
+        ```bash
+        npm run dev
+        ```
 
--   **Frontend User Interface:** `http://localhost:5173`
--   **Backend API Base URL:** `http://localhost:8080`
--   **Interactive API Documentation (Swagger):** `http://localhost:8080/swagger-ui.html`
+## 🌐 Accessing the Application
 
-### API Usage
+Once both services are running, the application will be available at:
+
+-   **Frontend UI:** `http://localhost:5173`
+-   **Backend API:** `http://localhost:8080`
+-   **Swagger API Docs:** `http://localhost:8080/swagger-ui.html`
+
+### API Credentials
 
 The API is protected by HTTP Basic Authentication.
 -   **Username:** `admin`
 -   **Password:** `password`
-
-You can test all endpoints interactively via the **[Swagger UI](http://localhost:8080/swagger-ui.html)** by using the "Authorize" button.
